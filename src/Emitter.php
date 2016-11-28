@@ -5,9 +5,9 @@ namespace SocketIO;
 define('EVENT', 2);
 define('BINARY_EVENT', 5);
 
-if (!function_exists('msgpack_pack')) {
-  require(__DIR__ . '/msgpack_pack.php');
-}
+//if (!function_exists('msgpack_pack')) {
+  require(__DIR__ . '/msgpack_pack_php.php');
+//}
 
 class Emitter {
   public function __construct($redis = FALSE, $opts = array()) {
@@ -117,7 +117,7 @@ class Emitter {
     }
 
     // publish
-    $packed = msgpack_pack(array($packet, array(
+    $packed = msgpack_pack_php(array($packet, array(
       'rooms' => $this->_rooms,
       'flags' => $this->_flags
     )));

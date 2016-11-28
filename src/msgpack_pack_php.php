@@ -1,6 +1,6 @@
 <?php
 // From https://github.com/onlinecity/msgpack-php
-function msgpack_pack($input) {
+function msgpack_pack_php($input) {
   static $bigendian;
   if (!isset($bigendian)) $bigendian = (pack('S', 1) == pack('n', 1));
 
@@ -101,8 +101,8 @@ function msgpack_pack($input) {
     }
 
     foreach ($input as $key => $elm) {
-      if ($isMap) $buf .= msgpack_pack($key);
-      $buf .= msgpack_pack($elm);
+      if ($isMap) $buf .= msgpack_pack_php($key);
+      $buf .= msgpack_pack_php($elm);
     }
     return $buf;
 
